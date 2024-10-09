@@ -4,9 +4,9 @@ namespace DadJokesApp
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-
+            //Array of dadJokes
             string[] dadJokes = new string [12];
             
             dadJokes[0] = "What has five toes and isn't your foot? My foot.";
@@ -22,18 +22,42 @@ namespace DadJokesApp
             dadJokes[10] = "Why did the rabbit go to the salon? It was having a bad hare day.";
             dadJokes[11] = "Why do ducks have feathers on their tales? To hide their butt-quacks.";
 
-        }
-
+            //Creation of the random class
             Random rnd = new Random();
-            bool moreDadJokes = true;
 
-            while (moreDadJokes)
+            //Variables that will display two random jokes for user
+            int jokeOne = rnd.Next(0, 12);
+            int jokeTwo = rnd.Next(0,12);
+
+            //This will display it to the user 
+            Console.WriteLine(dadJokes[jokeOne]);
+            Console.WriteLine(dadJokes[jokeTwo]);
+
+            //Question that will allow user to answer if they want another joke or not
+            Console.Write("Would you like another dad joke? (yes/no): ");
+            
+            //Stores user's answer to define the next step
+            String answer = Console.ReadLine();
+
+            //While loop that will continue looping until the user types in anything else besides yes
+            //answer.ToLower() intakes answers in all lowercase for easier understanding
+            while (answer.ToLower() == "yes")
             {
-                Console.WriteLine("Dad joke #1: ");
-
-                //Still working on figuring out the code
+                //Variable that will allow to give a random joke
+                int jokeIndex = rnd.Next(0,12);
+                Console.WriteLine(dadJokes[jokeIndex]); //Will display random joke
+                //Quesiton for user to answer if they want another joke
+                Console.Write("Would you like to hear another dad joke?(yes/no): ");
+                answer = Console.ReadLine(); ////Stores user's answer to define the next step
             }
+            //If user does not input yes it will print the following message and end the program
+            Console.WriteLine("Thank you for visiting our program!");
 
+        } //end public main 
+          
     } //end class
 
 } //end namespace
+
+//I tried figuring out how to print the jokes without them repeating themselves, but I couldn't figure it out.
+//I know it wasn't a requirement for this challenge, but I wanted to give it a try (didn't succeed though).
